@@ -1,13 +1,14 @@
-package com.kh.run;
+package com.kh.opendata.run;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+
 
 public class Application {
 
@@ -40,44 +41,6 @@ public class Application {
 	}
 	br.close();
 	urlConnection.disconnect();
-
-	
-	
-	
-	
-	
-	
-	
-	
-	// 시험범위 아님   API 파싱하는법
-	
-	
-	
-	// JSON 파싱 시작
-//	String responseData = responseBuffer.toString();
-//	JSONObject jsonResponse = new JSONObject(responseData);
-//	
-//	// 구조 파악
-//	JSONObject response = jsonResponse.getJSONObject("response");
-//	JSONObject body = response.getJSONObject("body");
-//	JSONObject items = body.getJSONObject("items");
-//	JSONArray item = items.getJSONArray("item");
-//	
-//	
-////	System.out.println(item);
-//	
-//	for(int i = 0; i<item.length(); i++) {
-//		JSONObject result = item.getJSONObject(i);
-////		System.out.println(result);
-//		
-//		String careNm = result.getString("careNm");
-//		String careAddr = result.getString("careAddr");
-//		System.out.println("동물보호센터명 : "+ careNm);
-//		System.out.println("주소 : "+ careAddr);
-//		System.out.println();
-//	}
-	
-	
 	
 	}
 	
@@ -86,6 +49,43 @@ public class Application {
 
 
 
+
+
+
+
+
+
+
+
+
+// 시험범위 아님   API 파싱하는법
+
+
+
+// JSON 파싱 시작
+
+String responseData = responseBuffer.toString();
+JSONObject jsonResponse = new JSONObject(responseData);
+
+// 구조 파악
+JSONObject response = jsonResponse.getJSONObject("response");
+JSONObject body = response.getJSONObject("body");
+JSONObject items = body.getJSONObject("items");
+JSONArray item = items.getJSONArray("item");
+
+
+//System.out.println(item);
+
+for(int i = 0; i<item.length(); i++) {
+	JSONObject result = item.getJSONObject(i);
+//	System.out.println(result);
+	
+	String careNm = result.getString("careNm");
+	String careAddr = result.getString("careAddr");
+	System.out.println("동물보호센터명 : "+ careNm);
+	System.out.println("주소 : "+ careAddr);
+    System.out.println();
+}
 
 
 
